@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Miembros</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="table.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Miembros</h1>
+    </header>
+
+    <div id="controls">
+        <input type="text" id="search" placeholder="Buscar...">
+        <select id="filter-gender">
+            <option value="">Filtrar por Género</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+        </select>
+        <select id="filter-age">
+            <option value="">Filtrar por Edad</option>
+            <option value="nino">Niño (0-8 años)</option>
+            <option value="joven">Joven (12-18 años)</option>
+            <option value="adulto">Adulto (19+ años)</option>
+        </select>
+        <select id="filter-baptized">
+            <option value="">Filtrar por Bautizado</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
+        <select id="filter-sede">
+            <option value="">Filtrar por Sede</option>
+            <option value="Bogotá">Bogotá</option>
+            <option value="Cajicá">Cajicá</option>
+            <option value="Ciudad Bolívar">Ciudad Bolívar</option>
+            <option value="Montelíbano">Montelíbano</option>
+            <option value="Live">Live</option>
+        </select>
+        <button id="add-member">Agregar Miembro</button>
+        <button id="print-table">Imprimir Tabla</button>
+        <button id="export-csv">Exportar CSV</button>
+        <button id="export-word">Exportar Word</button>
+        <button id="export-excel">Exportar Excel</button>
+    </div>
+
+    <div class="table-wrapper">
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tipo Documento</th>
+                    <th>Número Documento</th>
+                    <th>Sede</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Género</th>
+                    <th>Número Celular</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Edad</th>
+                    <th>Dirección</th>
+                    <th>Barrio</th>
+                    <th>Ciudad</th>
+                    <th>País</th>
+                    <th>Estado Civil</th>
+                    <th>Bautizado</th>
+                    <th>Nombre Invitador</th>
+                    <th>Correo</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Nivel CLIC</th>
+                    <th>Consolidado</th>
+                    <th>Grupo Transformación</th>
+                    <th>Cargo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+
+    <div id="form-container" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Formulario de Miembro</h2>
+            <form id="member-form">
+                <div>
+                    <label for="tipoDocumento">Tipo de Documento:</label>
+                    <select id="tipoDocumento" required>
+                        <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        <option value="Registro Civil">Registro Civil</option>
+                        <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="numeroDocumento">Número de Documento:</label>
+                    <input type="text" id="numeroDocumento" required>
+                </div>
+                <div>
+                    <label for="sede">Sede:</label>
+                    <select id="sede" required>
+                        <option value="Bogotá">Bogotá</option>
+                        <option value="Cajicá">Cajicá</option>
+                        <option value="Ciudad Bolívar">Ciudad Bolívar</option>
+                        <option value="Montelíbano">Montelíbano</option>
+                        <option value="Live">Live</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombres">Nombres:</label>
+                    <input type="text" id="nombres" required>
+                </div>
+                <div>
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" required>
+                </div>
+                <div>
+                    <label for="genero">Género:</label>
+                    <select id="genero" required>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="numeroCelular">Número de Celular:</label>
+                    <input type="text" id="numeroCelular" required>
+                </div>
+                <div>
+                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fechaNacimiento" required>
+                </div>
+                <div>
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" required>
+                </div>
+                <div>
+                    <label for="barrio">Barrio:</label>
+                    <input type="text" id="barrio" required>
+                </div>
+                <div>
+                    <label for="ciudad">Ciudad:</label>
+                    <input type="text" id="ciudad" required>
+                </div>
+                <div>
+                    <label for="pais">País:</label>
+                    <input type="text" id="pais" required>
+                </div>
+                <div>
+                    <label for="estadoCivil">Estado Civil:</label>
+                    <select id="estadoCivil" required>
+                        <option value="Soltero/a">Soltero/a</option>
+                        <option value="Casado/a">Casado/a</option>
+                        <option value="Viudo/a">Viudo/a</option>
+                        <option value="Divorciado/a">Divorciado/a</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="bautizado">Bautizado:</label>
+                    <select id="bautizado" required>
+                        <option value="Sí">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="nombreInvitador">Nombre del Invitador:</label>
+                    <input type="text" id="nombreInvitador" required>
+                </div>
+                <div>
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" required>
+                </div>
+                <div>
+                    <label for="fechaIngreso">Fecha de Ingreso:</label>
+                    <input type="date" id="fechaIngreso" required>
+                </div>
+                <div>
+                    <label for="nivelClic">Nivel CLIC:</label>
+                    <select id="nivelClic" required>
+                        <option value="Ninguno">Ninguno</option>
+                        <option value="Transición">Transición</option>
+                        <option value="Identidad">Identidad</option>
+                        <option value="Propósito">Propósito</option>
+                        <option value="Carácter">Carácter</option>
+                        <option value="Liderazgo">Liderazgo</option>
+                        <option value="Ministerio">Ministerio</option>
+                        <option value="Especialización">Especialización</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="consolidado">Consolidado:</label>
+                    <select id="consolidado" required>
+                        <option value="Sí">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="grupoTransformacion">Grupo de Transformación:</label>
+                    <select id="grupoTransformacion" required>
+                        <option value="Sí">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div>
+                    <div>
+                        <label for="cargo">Cargo:</label>
+                        <select id="cargo" required>
+                            <option value="Ninguno">Ninguno</option>
+                            <option value="Pastor">Pastor</option>
+                            <option value="Líder">Líder</option>
+                            <option value="Coordinador">Coordinador</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" id="submit-form">Guardar</button>
+                        <button type="button" id="cancel-form">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <script>
+        </script>
+    </body>
+    </html>
+    <!--IBZAN2024-->

@@ -1,0 +1,7 @@
+Fecha de ingreso
+Nivel clic = Ninguno, transicion, identidad, proposito, caracter, liderazgo, ministerio, especializacion.
+Consolidado = si o no
+Grupo de transformacion = si o no
+Cargo = Ninguno, pastor, lider, coordinador
+
+arregla los botones de filtro, los botones como imprimir y los de exportar arreglalos, tambien lo de la foto y lo del formulario arregla NIVEL CLICK, consolidado, grupo de transformacion, cargo 
